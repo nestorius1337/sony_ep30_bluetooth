@@ -31,7 +31,7 @@ hacking a Sony EP30 compact stereo combo to support bluetooth
 ### stage 2: using the CD audio input
 * soldering the L/R/GND to back side of the CD connector (labeled *CN203*)
 * **could not get the audio to play at all**
-* I think the output is muted (*CN302/MUTE*) as long as ne CD data is read
+* I think the output is muted (*CN302/MUTE*) as long as no CD data is read
 
 ### stage 3: back to tape
 * soldering the L/R/GND to back side of the tape connector (labeled *CASSETE BOARD/CN201*)
@@ -45,8 +45,8 @@ hacking a Sony EP30 compact stereo combo to support bluetooth
 * shorted *S201*
 * +5V output is connected to KRC-86B VIN
 * GND is connected to KRC-86B GND
-* **bt-audio is working but there is noise**
-* put everything back together
+* **bt-audio is working but there is noise, KRC-86B powers on when the audio system is turned on**
+* putting everything back together
 
 ### stage 5: audio troubleshooting
 resources:
@@ -60,10 +60,10 @@ there are two types of noise present:
 solutions:
 * **removing KRC-86B AGND -> decreasing low-frequency humming volume, but still present without sound playing**
 * the system uses a common ground for both audio and V+, so disconnecting AGND removed a grounding loop
-* moving the grounding to the central GND point of the systems power board could prove beneficial in a *star grounding* ansatz
 
 **final thoughts for this stage of the project:**
+* moving the grounding to the central GND point of the systems power board could prove beneficial in a *star grounding* ansatz
 * the high-frequency noise could be induced by the unshielded bluetooth circuit, but since it is all on one board, putting the circuit into a shielding box would not work
 * I would like to look at the L/R and especially GND line with an oscilloscope and maybe spectrum analyzer (kinda overkill here) to perform a frequency analysis
 * regaining tape functionality could be achieved by breaking the solder bridge (made by me) on *S201* and plugging the connector *CN202* back in
-* closing *SN201* sets COTR on *CN201* high (+9V) (traces to the muting switch control), so VIN and GND should be moved to *CN201* and a transistor could pull COTR to +9V if EN on KRC-86B is high (+3.3V) (high if bluetooth device is paired). No damage should be done since the IC seems to be protected by a diode from the COTR signal
+* closing *SN201* sets COTR on *CN201* high (+9V) (traces to the muting switch control), so VIN and GND should be moved to *CN201* and a transistor could pull COTR to +9V if EN on KRC-86B is high (+3.3V) (high if bluetooth device is paired); no damage should be done since the IC seems to be protected by a diode from the COTR signal
